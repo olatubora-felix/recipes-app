@@ -1,5 +1,16 @@
+import { Banner } from "../components/features/Home/Banner";
+import { Categories } from "../components/features/Home/Categories";
+import RecipeLists from "../components/recipes/RecipeLists";
+
 const HomePage = () => {
-  return <div className="bg-red-500">HomePage</div>;
+  return (
+    <main className="container mx-auto py-10 space-y-10">
+      <Banner />
+      <Categories />
+      <RecipeLists />
+      <RecipeLists title={"Recommended Recipes"} skip={8} />
+    </main>
+  );
 };
 
 export default HomePage;

@@ -2,10 +2,12 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import HomePage from "./pages/home";
 import RecipesPage from "./pages/recipes";
 import RecipeDetailsPage from "./pages/recipes/recipeDetails";
+import Navbar from "./components/layout/Navbar";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/">
           <Route index element={<HomePage />} />
