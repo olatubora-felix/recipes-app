@@ -4,7 +4,7 @@ import RecipeLists from "../components/recipes/RecipeLists";
 
 const HomePage = () => {
   return (
-    <main className="container mx-auto py-10 space-y-10">
+    <main className="container max-w-screen-xl mx-auto py-10 space-y-10">
       <Banner />
       <Categories />
       <RecipeLists />
