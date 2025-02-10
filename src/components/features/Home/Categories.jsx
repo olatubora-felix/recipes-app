@@ -8,7 +8,7 @@ export const Categories = () => {
       {categories.slice(0, 5).map((category) => (
         <Link
           key={category}
-          to={`/?search=${category?.toLowerCase()}`}
+          to={`/?category=${category?.toLowerCase()}`}
           className={clsx(
             `py-3 px-6 w-[236px]  flex justify-center items-center rounded-md text-white font-medium text-base [&:nth-child(odd)]:bg-[#F6784C] [&:nth-child(even)]:bg-[#84BD00]`,
             " "
