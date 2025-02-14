@@ -1,8 +1,8 @@
-import { Link } from "react-router";
+import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { RecipeCard } from "./RecipeCard";
 import RecipeLoader from "./RecipeLoader";
-
+import { Link } from "react-router";
 /* eslint-disable react/prop-types */
 const RecipeLists = ({
   title,
@@ -11,33 +11,37 @@ const RecipeLists = ({
   filterCategory = false,
   addClass = "grid grid-cols-4 gap-5",
 }) => {
+  const [filters, setFilters] = useState({
+    diet: [],
+    allergies: [],
+    cuisines: [],
+    goals: [],
+  });
+
   const { data, status, error } = useFetch({
     url: `recipes`,
     limit,
     skip,
     filterCategory,
+    filters, // Pass filters to useFetch
   });
-  console.log(error);
+
   const recipes = data?.recipes;
-  console.log(addClass);
+
   return (
     <section className="space-y-4">
       {title && <h2 className="font-bold text-2xl text-gray-800">{title}</h2>}
-      {status === "pending" && <RecipeLoader addClass={addClass} />}
+      {status === "pending" && <RecipeLoader />}
       {status === "success" && recipes.length === 0 && (
         <div className="h-[400px] w-full flex justify-center items-center flex-col gap-3">
-          <h1 className="text-2xl font-medium text-gray-900">
-            No Recipe Found
-          </h1>
-          <Link
-            to={"/"}
-            className="bg-gray-600 text-white py-2 px-4 rounded-md"
-          >
+          <h1 className="text-2xl font-medium text-gray-900">No Recipe Found</h1>
+          <Link to="/" className="bg-gray-600 text-white py-2 px-4 rounded-md">
             Get All Recipes
           </Link>
+      
         </div>
       )}
-      <div className={addClass}>
+      <div className="grid grid-cols-4 gap-5">
         {recipes &&
           recipes.length > 0 &&
           status === "success" &&

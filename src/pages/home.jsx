@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import RecipeLists from "../components/recipes/RecipeLists";
 
+
 const HomePage = () => {
   return (
     <>
@@ -11,7 +12,12 @@ const HomePage = () => {
       </div>
       <RecipeLists filterCategory={true} />
       <RecipeLists title={"Recommended Recipes"} skip={8} />
+<<<<<<< Updated upstream
     </>
+=======
+ 
+    </main>
+>>>>>>> Stashed changes
   );
 };
 
