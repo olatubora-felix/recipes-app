@@ -1,24 +1,14 @@
-import { Link } from "react-router";
 import RecipeLists from "../components/recipes/RecipeLists";
 
-
-const HomePage = () => {
+const Home = () => {
   return (
-    <>
+    <main>
       <div>
-        <Link to={"/"} className="text-green-500 font-medium text-2xl">
-          All Recipes
-        </Link>
+        <RecipeLists filterCategory={true} />
+        <RecipeLists title={"Recommended Recipes"} skip={8} />
       </div>
-      <RecipeLists filterCategory={true} />
-      <RecipeLists title={"Recommended Recipes"} skip={8} />
-<<<<<<< Updated upstream
-    </>
-=======
- 
     </main>
->>>>>>> Stashed changes
   );
 };
 
-export default HomePage;
+export default Home;
