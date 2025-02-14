@@ -5,8 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 const useFetch = ({ limit = 8, skip = 0, url, filterCategory }) => {
   const [searchParams] = useSearchParams();
   const category = searchParams.get("category");
+  const mealType = searchParams.get("mealType");
   const search = searchParams.get("search");
-  console.log(category, "category");
   const values = { limit, skip };
   const query = useQuery({
     queryKey: [
@@ -15,8 +15,18 @@ const useFetch = ({ limit = 8, skip = 0, url, filterCategory }) => {
       skip ?? "",
       category ?? "",
       search ?? "",
+      mealType ?? "",
     ],
     queryFn: async () => {
+      if (
+        mealType &&
+        mealType !== null &&
+        mealType !== undefined &&
+        filterCategory
+      ) {
+        const res = await axiosApi.get(`${url}/meal-type/${mealType}`);
+        return res.data;
+      }
       if (
         category &&
         category !== null &&

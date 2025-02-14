@@ -9,6 +9,7 @@ const RecipeLists = ({
   limit = 8,
   skip = 0,
   filterCategory = false,
+  addClass = "grid grid-cols-4 gap-5",
 }) => {
   const { data, status, error } = useFetch({
     url: `recipes`,
@@ -18,11 +19,11 @@ const RecipeLists = ({
   });
   console.log(error);
   const recipes = data?.recipes;
-
+  console.log(addClass);
   return (
     <section className="space-y-4">
       {title && <h2 className="font-bold text-2xl text-gray-800">{title}</h2>}
-      {status === "pending" && <RecipeLoader />}
+      {status === "pending" && <RecipeLoader addClass={addClass} />}
       {status === "success" && recipes.length === 0 && (
         <div className="h-[400px] w-full flex justify-center items-center flex-col gap-3">
           <h1 className="text-2xl font-medium text-gray-900">
@@ -36,7 +37,7 @@ const RecipeLists = ({
           </Link>
         </div>
       )}
-      <div className="grid grid-cols-4 gap-5">
+      <div className={addClass}>
         {recipes &&
           recipes.length > 0 &&
           status === "success" &&

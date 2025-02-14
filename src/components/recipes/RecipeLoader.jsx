@@ -1,7 +1,9 @@
+import clsx from "clsx";
+
 /* eslint-disable react/prop-types */
-const RecipeLoader = ({ length = 8 }) => {
+const RecipeLoader = ({ length = 8, addClass }) => {
   return (
-    <div className="grid grid-cols-4 gap-5">
+    <div className={clsx(`grid grid-cols-4 gap-5`, addClass)}>
       {Array.from({ length }, (_, i) => (
         <div className="bg-white animate-pulse rounded-md" key={i}>
           {/* Image */}
