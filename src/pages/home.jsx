@@ -1,14 +1,18 @@
+import { Link } from "react-router";
 import RecipeLists from "../components/recipes/RecipeLists";
 
-const Home = () => {
+const HomePage = () => {
   return (
-    <main>
+    <>
       <div>
-        <RecipeLists filterCategory={true} />
-        <RecipeLists title={"Recommended Recipes"} skip={8} />
+        <Link to={"/"} className="text-green-500 font-medium text-2xl">
+          All Recipes
+        </Link>
       </div>
-    </main>
+      <RecipeLists filterCategory={true} />
+      <RecipeLists title={"Recommended Recipes"} skip={8} />
+    </>
   );
 };
 
-export default Home;
+export default HomePage;

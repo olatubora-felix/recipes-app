@@ -23,7 +23,7 @@ const RecipeLists = ({
     limit,
     skip,
     filterCategory,
-    filters, // Pass filters to useFetch
+    filters, 
   });
 
   const recipes = data?.recipes;
